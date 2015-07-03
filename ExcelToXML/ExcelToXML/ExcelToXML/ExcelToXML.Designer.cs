@@ -37,7 +37,11 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.About = this.Factory.CreateRibbonButton();
-            this.button2 = this.Factory.CreateRibbonButton();
+            this.Button_XML = this.Factory.CreateRibbonButton();
+            this.Key_R = this.Factory.CreateRibbonEditBox();
+            this.Key_C = this.Factory.CreateRibbonEditBox();
+            this.Value_R = this.Factory.CreateRibbonEditBox();
+            this.Value_C = this.Factory.CreateRibbonEditBox();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             // 
@@ -50,8 +54,12 @@
             // 
             // group1
             // 
+            this.group1.Items.Add(this.Key_R);
+            this.group1.Items.Add(this.Key_C);
+            this.group1.Items.Add(this.Button_XML);
+            this.group1.Items.Add(this.Value_R);
+            this.group1.Items.Add(this.Value_C);
             this.group1.Items.Add(this.About);
-            this.group1.Items.Add(this.button2);
             this.group1.Label = "group1";
             this.group1.Name = "group1";
             // 
@@ -61,11 +69,35 @@
             this.About.Name = "About";
             this.About.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.About_Click);
             // 
-            // button2
+            // Button_XML
             // 
-            this.button2.Label = "ExcelToXML";
-            this.button2.Name = "button2";
-            this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
+            this.Button_XML.Label = "ExcelToXML";
+            this.Button_XML.Name = "Button_XML";
+            this.Button_XML.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Button_XML_Click);
+            // 
+            // Key_R
+            // 
+            this.Key_R.Label = "Key(行R)";
+            this.Key_R.Name = "Key_R";
+            this.Key_R.Text = null;
+            // 
+            // Key_C
+            // 
+            this.Key_C.Label = "Key(列C)";
+            this.Key_C.Name = "Key_C";
+            this.Key_C.Text = null;
+            // 
+            // Value_R
+            // 
+            this.Value_R.Label = "Value(行R)";
+            this.Value_R.Name = "Value_R";
+            this.Value_R.Text = null;
+            // 
+            // Value_C
+            // 
+            this.Value_C.Label = "Value(列C)";
+            this.Value_C.Name = "Value_C";
+            this.Value_C.Text = null;
             // 
             // ExcelToXML
             // 
@@ -85,7 +117,11 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton About;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton Button_XML;
+        internal Microsoft.Office.Tools.Ribbon.RibbonEditBox Key_R;
+        internal Microsoft.Office.Tools.Ribbon.RibbonEditBox Key_C;
+        internal Microsoft.Office.Tools.Ribbon.RibbonEditBox Value_R;
+        internal Microsoft.Office.Tools.Ribbon.RibbonEditBox Value_C;
     }
 
     partial class ThisRibbonCollection

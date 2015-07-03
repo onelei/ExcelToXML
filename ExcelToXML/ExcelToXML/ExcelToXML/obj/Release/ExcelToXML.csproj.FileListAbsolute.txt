@@ -1,0 +1,11 @@
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\bin\Release\ExcelToXML.dll
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\bin\Release\ExcelToXML.pdb
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\bin\Release\ExcelToXML.dll.manifest
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\bin\Release\ExcelToXML.vsto
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\bin\Release\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\obj\Release\ExcelToXML.ExcelToXML.resources
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\obj\Release\ExcelToXML.Properties.Resources.resources
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\obj\Release\ExcelToXML.csproj.GenerateResource.Cache
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\obj\Release\ExcelToXML.dll
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\obj\Release\ExcelToXML.pdb
+C:\Users\MI-32\Documents\GitHub\gitXML\ExcelToXML\ExcelToXML\ExcelToXML\ExcelToXML\obj\Release\ExcelToXML.csprojResolveAssemblyReference.cache

@@ -10,12 +10,20 @@ namespace ExcelToXML
 {
     public partial class ExcelToXML
     {
+        private int KeyRow = 2;
+        private int KeyColumn = 1;
+        private int ValueRow = 4;
+        private int ValueColumn = 1;
+  
         private void ExcelToXML_Load(object sender, RibbonUIEventArgs e)
         {
-
+            Key_R.Text = "" + KeyRow;
+            Key_C.Text = "" + KeyColumn;
+            Value_R.Text = "" + ValueRow;
+            Value_C.Text = "" + ValueColumn;
         }
 
-        private void button2_Click(object sender, RibbonControlEventArgs e)
+        private void Button_XML_Click(object sender, RibbonControlEventArgs e)
         {
             OnClickExcelToXML();  
         }
@@ -30,6 +38,8 @@ namespace ExcelToXML
         /// </summary>
         void OnClickExcelToXML()
         {
+            CheckInputValue();
+
             string fileName = ThisAddIn.Instance.workBook.Name;
             fileName = fileName.Replace(".xlsx", "");
 
@@ -38,18 +48,17 @@ namespace ExcelToXML
             int totalColumns = ThisAddIn.Instance.workBook.ActiveSheet.UsedRange.Columns.Count;
             text += "<"+fileName+">" + "<elements>";
             text += "<oneItem>";
-            int startRow = 1;
-            int startColumn = 1;
-            for (int i = startRow + 1; i != totalRows + 1; ++i)
+         
+            for (int i = ValueRow; i != totalRows + 1; ++i)
             {
-                for (int j = startColumn; j != totalColumns + 1; ++j)
+                for (int j = ValueColumn; j != totalColumns + 1; ++j)
                 {
-                    text += "<" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(startRow, j).Value + ">";
+                    text += "<" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(KeyRow, j).Value + ">";
                     // In the last row and last column, modify text style;
                     if (i == totalRows && j == totalColumns)
                     {
                         text += "" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(i, j).Value + "";
-                        text += "<" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(startRow, j).Value + ">";
+                        text += "<" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(KeyRow, j).Value + ">";
                     }
                     else
                     {
@@ -57,14 +66,14 @@ namespace ExcelToXML
                         if (j == totalColumns)
                         {
                             text += "" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(i, j).Value + "";
-                            text += "</" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(startRow, j).Value + ">";
+                            text += "</" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(KeyRow, j).Value + ">";
                             text += "</oneItem><oneItem>";
                            // " },{";
                         }
                         else
                         {
                             text += "" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(i, j).Value + "";
-                            text += "</" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(startRow, j).Value + ">";
+                            text += "</" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(KeyRow, j).Value + ">";
                         }
                     }
 
@@ -115,6 +124,7 @@ namespace ExcelToXML
         {
             MessageBox.Show(
                 "\n"
+                + "  Excel to XML\n"
                 + "  Save Successful!\n\n"
                 + "  Total: " + totalRows + " Rows"
                 + ", " + totalColumns + " Columns");
@@ -128,6 +138,51 @@ namespace ExcelToXML
                 + "  Created by OneLei.\n"
                 + "  Email: ahleiwolong@163.com \n"
                 + "  Copyright (c) 2015 Year. All rights reserved.\n\n");
+        }
+
+        void CheckInputValue()
+        {
+            // Get the key;
+            if (JugeNumberOrNot(Key_R.Text))
+            {
+                KeyRow = System.Int32.Parse(Key_R.Text);
+            }
+            if (JugeNumberOrNot(Key_C.Text))
+            {
+                KeyRow = System.Int32.Parse(Key_C.Text);
+            }
+
+            // Get the value;
+            if (JugeNumberOrNot(Value_R.Text))
+            {
+                KeyRow = System.Int32.Parse(Value_R.Text);
+            }
+            if (JugeNumberOrNot(Value_C.Text))
+            {
+                KeyRow = System.Int32.Parse(Value_C.Text);
+            }
+        }
+
+        private bool JugeNumberOrNot(string _text)
+        {
+            if (String.IsNullOrEmpty(_text))
+            {
+                MessageBox.Show("Input value is null or empty");
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    Int32.Parse(_text);
+                }
+                catch
+                {
+                    MessageBox.Show("Input value is not number!");
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
