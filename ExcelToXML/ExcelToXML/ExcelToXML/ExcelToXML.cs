@@ -149,17 +149,17 @@ namespace ExcelToXML
             }
             if (JugeNumberOrNot(Key_C.Text))
             {
-                KeyRow = System.Int32.Parse(Key_C.Text);
+                KeyColumn = System.Int32.Parse(Key_C.Text);
             }
 
             // Get the value;
             if (JugeNumberOrNot(Value_R.Text))
             {
-                KeyRow = System.Int32.Parse(Value_R.Text);
+                ValueRow = System.Int32.Parse(Value_R.Text);
             }
             if (JugeNumberOrNot(Value_C.Text))
             {
-                KeyRow = System.Int32.Parse(Value_C.Text);
+                ValueColumn = System.Int32.Parse(Value_C.Text);
             }
         }
 
