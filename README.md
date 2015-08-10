@@ -11,5 +11,5 @@ Email: ahleiwolong@163.com
 3=> Run the setup.exe  
 4=> Open a Excel file, you will find the excel like this  
 ![](https://github.com/onelei/ExcelToXML/blob/master/ImgCache/testExcel.png)  
-5=> Run the "ExcelToXML" button, the json file will create in the excel direction  
+5=> Click the "ExcelToXML" button, the XML file will create in the excel direction  
 ![](https://github.com/onelei/ExcelToXML/blob/master/ImgCache/testXml.png)
