@@ -6,7 +6,7 @@ Email: ahleiwolong@163.com
 
 # How To Use  
 1=> Download the ExcelToXML_Install.zip  
-2=> Extract the ZIP file to this direction  
+2=> Extract the ZIP file to this directory.  
 ![](https://github.com/onelei/ExcelToXML/blob/master/ImgCache/mulu.png)  
 3=> Run the setup.exe  
 4=> Open a Excel file, you will find the excel like this  
