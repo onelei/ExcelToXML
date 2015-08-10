@@ -6,6 +6,8 @@ using Microsoft.Office.Tools.Ribbon;
 using Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
+
 namespace ExcelToXML
 {
     public partial class ExcelToXML
@@ -39,16 +41,20 @@ namespace ExcelToXML
         void OnClickExcelToXML()
         {
             CheckInputValue();
+            Stopwatch MyCodeExeTime = new Stopwatch();
+            MyCodeExeTime.Start();
 
             string fileName = ThisAddIn.Instance.workBook.Name;
             fileName = fileName.Replace(".xlsx", "");
 
-            string text = "";
             int totalRows = ThisAddIn.Instance.workBook.ActiveSheet.UsedRange.Rows.Count;
             int totalColumns = ThisAddIn.Instance.workBook.ActiveSheet.UsedRange.Columns.Count;
+            totalRows = FixtotalRows(totalRows);
+            totalColumns = FixtotalColumns(totalColumns);
+
+            string text = "";
             text += "<"+fileName+">" + "<elements>";
-            text += "<oneItem>";
-         
+            text += "<oneItem>";      
             for (int i = ValueRow; i != totalRows + 1; ++i)
             {
                 for (int j = ValueColumn; j != totalColumns + 1; ++j)
@@ -88,16 +94,18 @@ namespace ExcelToXML
             
             fileName += ".xml";
             WriteToFile(path, fileName, text);
-            ShowMessage(totalRows, totalColumns);
+            MyCodeExeTime.Stop();
+            string myTime = MyCodeExeTime.ElapsedMilliseconds.ToString();
+            ShowMessage(totalRows, totalColumns, myTime);
          }
 
-        /*
-       * Write to file
-       * @param path
-       * @param name
-       * @param text
-       * return
-       */
+       /**
+        * Write to file
+        * @param path
+        * @param name
+        * @param text
+        * return
+        */
         public void WriteToFile(string path, string name, string text)
         {
             lock (this)
@@ -120,12 +128,13 @@ namespace ExcelToXML
         /*
          * Show message.
          */
-        private void ShowMessage(int totalRows, int totalColumns)
+        private void ShowMessage(int totalRows, int totalColumns, string _ExeTime)
         {
             MessageBox.Show(
                 "\n"
                 + "  Excel to XML\n"
                 + "  Save Successful!\n\n"
+                + "  Time:  " + _ExeTime + "毫秒.\n"
                 + "  Total: " + totalRows + " Rows"
                 + ", " + totalColumns + " Columns");
         }
@@ -184,5 +193,34 @@ namespace ExcelToXML
             }
             return true;
         }
+
+        private int FixtotalRows(int totalRows)
+        {
+            for (int i = 1; i < totalRows; i++)
+            {
+                string cellValue = "" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(i, 1).Value;
+                if (string.IsNullOrEmpty(cellValue))
+                {
+                    // 当前的为空,则totalRow到此为止,修复totalRow;
+                    return i - 1;
+                }
+            }
+            return totalRows;
+        }
+
+        private int FixtotalColumns(int totalColumns)
+        {
+            for (int i = 1; i < totalColumns; i++)
+            {
+                string cellValue = "" + ThisAddIn.Instance.workBook.ActiveSheet.Cells(1, i).Value;
+                if (string.IsNullOrEmpty(cellValue))
+                {
+                    // 当前的为空,则totalRow到此为止,修复totalRow;
+                    return i - 1;
+                }
+            }
+            return totalColumns;
+        }
+         
     }
 }

@@ -1,0 +1,22 @@
+<Test>
+	<elements>
+		<oneItem>
+			<id>1</id>
+			<level>100</level>
+			<name>name1</name>
+			<distance>1.1</distance>
+		</oneItem>
+		<oneItem>
+			<id>2</id>
+			<level>200</level>
+			<name>name2</name>
+			<distance>2.2</distance>
+		</oneItem>
+		<oneItem>
+			<id>3</id>
+			<level>300</level>
+			<name>name3</name>
+			<distance>3.3<distance>
+		</oneItem>
+	</elements>
+</Test>
